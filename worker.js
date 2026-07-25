@@ -1,5 +1,5 @@
 const _D_={_vl_:atob('dmxlc3M='),_tr_:atob('dHJvamFu'),_vm_:atob('dm1lc3M='),_ss_:atob('c2hhZG93c29ja3M='),_wg_:atob('d2lyZWd1YXJk'),_cl_:atob('Y2xhc2g='),_sb_:atob('c2luZ2JveA=='),_sb2_:atob('c2luZy1ib3g='),_mh_:atob('bWlob21v'),_hd_:atob('aGlkZGlmeQ=='),_sg_:atob('c3VyZ2U='),_qx_:atob('cXVhbng='),_ln_:atob('bG9vbg=='),_np_:atob('Tm92YVByb3h5'),_np2_:atob('Tm92YS1Qcm94eQ=='),_np3_:atob('Tm92YQ=='),_cf_:atob('Y2xvdWRmbGFyZQ=='),_xr_:atob('eHJheQ=='),_cr_:atob('Q21saXVzcw=='),_pr_:atob('UFJPWFlJUA=='),_sp_:atob('c3BlZWQuY2xvdWRmbGFyZS5jb20='),_wr_:atob('Tm92YS1XQVJQ'),_ws_:atob('d3M='),_grpc_:atob('Z3JwYw=='),_xhttp_:atob('eHR0cA=='),_aes128_:atob('YWVzLTEyOC1nY20='),_aes256_:atob('YWVzLTI1Ni1nY20='),_chrome_:atob('Y2hyb21l'),_mixed_:atob('bWl4ZWQ=')};
-const Version = 'V4.1.4';
+const Version = 'V4.1.5';
 let config_JSON, metavechIP = '', hafelSocks5Metavech = null, hafelSocks5Klali = false, cheshbonSocks5Sheli = '', parsedSocks5Address = {};
 let mitmonReshimaLevanaSocks5 = null, mitmonIpMetavech, mitmonNituachMetavech, indeksMaarachMetavechMitmon = 0, hafelGibuiMetavech = true, hadpasatYomanNipui = false;
 let connClientIp = '';
@@ -41,7 +41,7 @@ const NOVA_TG_HANDLE = '@' + (String(NOVA_TG_CHANNEL).split('/').filter(Boolean)
 // Build stamp: bump this whenever worker.js changes so a deploy can be verified at a
 // glance (GET /install/status returns it). If the panel/status still shows an old build
 // after a deploy, the upload didn't take.
-const NOVA_BUILD = '2026-07-14.20';
+const NOVA_BUILD = '2026-07-25.1';
 globalThis.__workerStart = Date.now();
 // --- Config JSON cache: avoids repeated KV reads on every request ---
 const _CFG_KEY = 'config.json';
@@ -168,7 +168,7 @@ function isPanelApiKey(key) {
 	} catch (e) { return false; }
 }
 function isPanelApiKeyOrMaster(key, masterKey) {
-	return key === masterKey || isPanelApiKey(key);
+	return timingSafeStrEqual(key, masterKey) || isPanelApiKey(key);
 }
 let cachedPanelApiKeys = null;
 let cachedPanelApiKeysTime = 0;
@@ -196,7 +196,7 @@ function updateApiKeyLastUsed(key) {
 function isApiAuthenticated(request, adminPassword, body) {
 	const key = extractAuthKey(request, body);
 	if (!key) return false;
-	if (key === adminPassword) return true;
+	if (timingSafeStrEqual(key, adminPassword)) return true;
 	if (isPanelApiKey(key)) { updateApiKeyLastUsed(key); return true; }
 	return false;
 }
@@ -228,7 +228,7 @@ async function resolveProxyIpGeo(proxyIp) {
 		if (resp.ok) {
 			const data = await resp.json();
 			const cc = (data.country || '').toUpperCase();
-			const flags = { US: '🇺🇸', GB: '🇬🇧', DE: '🇩🇪', FR: '🇫🇷', NL: '🇳🇱', JP: '🇯🇵', SG: '🇸🇬', HK: '🇭🇰', KR: '🇰🇷', CA: '🇨🇦', AU: '🇦🇺', IN: '🇮🇳', TR: '🇹🇷', RU: '🇷🇺', BR: '🇧🇷', IT: '🇮🇹', ES: '🇪🇸', SE: '🇸🇪', CH: '🇨🇭', PL: '🇵🇱', AT: '🇦🇹', BE: '🇧🇪', NO: '🇳🇴', FI: '🇫🇮', DK: '🇩🇰', CZ: '🇨🇿', RO: '🇷🇴', UA: '🇺🇦', IL: '🇮🇱', AE: '🇦🇪', SA: '🇦🇪', TH: '🇹🇭', VN: '🇻🇳', MY: '🇲🇾', ID: '🇮🇩', PH: '🇵🇭', TW: '🇹🇼', CN: '🇨🇳', MX: '🇲🇽', AR: '🇦🇷', CL: '🇨🇱', CO: '🇨🇴', ZA: '🇿🇦', EG: '🇪🇬', NG: '🇳🇬', KE: '🇰🇪' };
+			const flags = { US: '🇺🇸', GB: '🇬🇧', DE: '🇩🇪', FR: '🇫🇷', NL: '🇳🇱', JP: '🇯🇵', SG: '🇸🇬', HK: '🇭🇰', KR: '🇰🇷', CA: '🇨🇦', AU: '🇦🇺', IN: '🇮🇳', TR: '🇹🇷', RU: '🇷🇺', BR: '🇧🇷', IT: '🇮🇹', ES: '🇪🇸', SE: '🇸🇪', CH: '🇨🇭', PL: '🇵🇱', AT: '🇦🇹', BE: '🇧🇪', NO: '🇳🇴', FI: '🇫🇮', DK: '🇩🇰', CZ: '🇨🇿', RO: '🇷🇴', UA: '🇺🇦', IL: '🇮🇱', AE: '🇦🇪', SA: '🇸🇦', TH: '🇹🇭', VN: '🇻🇳', MY: '🇲🇾', ID: '🇮🇩', PH: '🇵🇭', TW: '🇹🇼', CN: '🇨🇳', MX: '🇲🇽', AR: '🇦🇷', CL: '🇨🇱', CO: '🇨🇴', ZA: '🇿🇦', EG: '🇪🇬', NG: '🇳🇬', KE: '🇰🇪' };
 			return { flag: flags[cc] || '🌐', country: data.country || 'Unknown', countryCode: cc, city: data.city || '', isp: data.org || data.isp || '' };
 		}
 	} catch (e) {}
@@ -743,9 +743,14 @@ function cmpVersions(a, b) {
 	for (let i = 0; i < Math.max(pa.length, pb.length); i++) { const na = pa[i] || 0, nb = pb[i] || 0; if (na > nb) return 1; if (nb > na) return -1; }
 	return 0;
 }
+// Auto-update source is pinned to the official repo and cannot be overridden from
+// panel settings. Otherwise anyone who could tamper with network-settings.json (e.g.
+// a compromised admin session) could point auto-update at a hostile repo and deploy
+// arbitrary code with the stored Cloudflare token. If you fork, change UPDATE_REPO here.
+const UPDATE_REPO = 'IRNova/Nova-Proxy';
 async function runAutoUpdate(env, ns, ctx) {
 	try {
-		const repo = (ns.githubRepo || 'IRNova/Nova-Proxy').replace(/https?:\/\/github\.com\//, '').trim();
+		const repo = UPDATE_REPO;
 		const cfAccountId = ns.cfAccountId, cfApiToken = ns.cfApiToken, cfWorkerName = ns.cfWorkerName;
 		if (!cfAccountId || !cfApiToken || !cfWorkerName) return;
 		let remoteVer = null, workerCode = null;
@@ -1881,8 +1886,12 @@ export default {
 						respCP.headers.set('Set-Cookie', `auth=${await makeSessionToken(UA, mafteachHatzpana, neu)}; Path=/; HttpOnly; Secure; SameSite=Lax`);
 						return respCP;
 					} else if (nativGisha === 'admin/security/reveal') {
+						// Disabled by design. The panel password is never returned to the client, not
+						// even to an authenticated session: a stolen session or a panel bug must not be
+						// able to escalate into full, permanent credential disclosure. Use change-password
+						// to rotate it instead. The `source` field is safe to keep for the UI.
 						let src = 'none'; try { src = envPass ? 'env' : ((await env.KV.get('admin_pass')) ? 'kv' : 'none'); } catch (e) { src = envPass ? 'env' : 'none'; }
-						return new Response(JSON.stringify({ password: adminPassword || '', source: src }), { status: 200, headers: { 'Content-Type': 'application/json;charset=utf-8', 'Cache-Control': 'no-store' } });
+						return new Response(JSON.stringify({ disabled: true, source: src }), { status: 410, headers: { 'Content-Type': 'application/json;charset=utf-8', 'Cache-Control': 'no-store' } });
 					} else if (nativGisha === 'admin/security/2fa-setup') {
 						const secret = randomBase32(32);
 						const label = encodeURIComponent('Nova Proxy (' + url.host + ')');
@@ -2543,7 +2552,7 @@ export default {
 						// Accept: a registered panel API key, the admin password, OR this child's own
 						// "Sync API key" (hagdarotReshet.syncApiKey) - the field the hub UI tells you to match.
 						const _childSyncKey = (hagdarotReshet && hagdarotReshet.syncApiKey) ? String(hagdarotReshet.syncApiKey).trim() : '';
-						if (!isPanelApiKey(authKey) && authKey !== adminPassword && !(_childSyncKey && authKey === _childSyncKey)) return _sj({ success: false, error: 'Unauthorized' }, 403);
+						if (!isPanelApiKey(authKey) && !timingSafeStrEqual(authKey, adminPassword) && !(_childSyncKey && timingSafeStrEqual(authKey, _childSyncKey))) return _sj({ success: false, error: 'Unauthorized' }, 403);
 							// Only apply data that actually looks complete. A master pushing an empty or partial
 							// object (a mistaken/partial sync) must NEVER overwrite a working child, which would
 							// brick every admin route on the child. Require the core objects before writing.
@@ -2606,7 +2615,7 @@ export default {
 							await env.KV.put('network-settings.json', JSON.stringify(ns, null, 2));
 							mitmonHagdarotReshet = null;
 							if (body.action === 'check') {
-								const repo = (ns.githubRepo || 'IRNova/Nova-Proxy').replace(/https?:\/\/github\.com\//, '').trim();
+								const repo = UPDATE_REPO;
 								let remoteVer = null;
 								try { const res = await fetch(`https://raw.githubusercontent.com/${repo}/main/version.json`, { headers: { 'User-Agent': 'NovaProxy' }, cf: { cacheTtl: 0 } }); if (res.ok) { const j = await res.json(); if (j && j.version) remoteVer = String(j.version).replace(/^[vV]/, ''); } } catch (e) {}
 								const current = String(Version).replace(/^[vV]/, '');
@@ -9152,6 +9161,10 @@ async function tipulAshafHatkana(request, env, url, adminPassword, encryptionKey
 	}
 	if (sub === 'recover-disguise') {
 		if (request.method !== 'POST') return new Response('Method Not Allowed', { status: 405 });
+		// Only usable during first-time setup. Once a panel is configured this route is
+		// closed, so a passer-by can't wipe the stealth paths on a live panel. Real
+		// recovery goes through the ADMIN secret + /admin/telegram-login (authenticated).
+		if (adminPassword) return new Response(JSON.stringify({ error: 'already_configured' }), { status: 409, headers: { 'Content-Type': 'application/json;charset=utf-8' } });
 		if (!hasStore) return new Response(JSON.stringify({ error: 'no_kv' }), { status: 400, headers: { 'Content-Type': 'application/json;charset=utf-8' } });
 		try {
 			let ns = {};
@@ -9171,6 +9184,11 @@ async function tipulAshafHatkana(request, env, url, adminPassword, encryptionKey
 	}
 	if (sub === 'recover-password') {
 		if (request.method !== 'POST') return new Response('Method Not Allowed', { status: 405 });
+		// Only usable during first-time setup (before any admin password exists). Once the
+		// panel is configured this route is closed with 409, so nobody can reset the admin
+		// password without auth. Post-install recovery is the ADMIN secret in Cloudflare
+		// plus the authenticated /admin/telegram-login one-click login.
+		if (adminPassword) return new Response(JSON.stringify({ error: 'already_configured' }), { status: 409, headers: { 'Content-Type': 'application/json;charset=utf-8' } });
 		if (!hasStore) return new Response(JSON.stringify({ error: 'no_kv' }), { status: 400, headers: { 'Content-Type': 'application/json;charset=utf-8' } });
 		let body = {};
 		try { body = await request.json(); } catch (e) { try { body = Object.fromEntries(new URLSearchParams(await request.text())); } catch (e2) {} }

@@ -1,21 +1,21 @@
-<div align="center" dir="rtl">
-
-<img src="https://raw.githubusercontent.com/iiviirv/irnova-site/main/brand/nova-logo-gradient.svg" width="70" alt="نوا پروکسی">
-
 <div align="left">
   <a href="README.md">🇬🇧 English</a>
 </div>
 
-# 🌟 نوا پروکسی (Nova Proxy)
+<p align="center">
+  <img src="./assets/readme/hero.fa.svg" width="100%" alt="نوا پروکسی: یک پروکسی شخصی و ضدسانسور به‌همراه پنل مدیریت روی یک Cloudflare Worker و پلن رایگان. کاربران به یک Worker روی لبهٔ کلادفلر وصل می‌شوند، بدون هیچ سرور مبدأ.">
+</p>
+
+<div align="center" dir="rtl">
 
 **یک پروکسی شخصی و ضدسانسور به‌همراه پنل مدیریت، روی یک Cloudflare Worker.**
 
-VLESS · Trojan · Shadowsocks · gRPC · XHTTP روی WebSocket + TLS — با پنل دوم‌زبانه
+VLESS، Trojan، Shadowsocks، gRPC، XHTTP روی WebSocket + TLS، با پنل دوم‌زبانه
 (English + فارسی)، بهینه‌سازی IP تمیز به‌تفکیک ISP، حساب چندکاربره، ربات تلگرام،
 WARP، زنجیره پروکسی و حالت Backend. اجرا روی **پلن رایگان** Cloudflare.
 
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/نسخه-3.6.3-blueviolet?style=for-the-badge)](https://github.com/IRNova/Nova-Proxy)
+[![Version](https://img.shields.io/badge/نسخه-4.1.4-blueviolet?style=for-the-badge)](https://github.com/IRNova/Nova-Proxy)
 [![Stars](https://img.shields.io/github/stars/IRNova/Nova-Proxy?style=for-the-badge&color=0ea5e9)](https://github.com/IRNova/Nova-Proxy)
 
 </div>
@@ -37,28 +37,32 @@ WARP، زنجیره پروکسی و حالت Backend. اجرا روی **پلن �
 
 ---
 
-## 📖 نوا پروکسی چیست؟
+<p align="center">
+  <img src="./assets/readme/section-what-is.fa.svg" width="100%" alt="نوا پروکسی چیست؟ پروکسی همه‌کارهٔ ضدسانسور و بدون‌سرور.">
+</p>
 
-نوا پروکسی یک **پروکسی شخصی و همه‌کاره برای دور زدن سانسور** است که کاملاً روی Cloudflare Workers — **پلن رایگان** — اجرا می‌شود. این پروژه یک پروکسی قدرتمند (VLESS، Trojan، Shadowsocks روی WebSocket/gRPC/XHTTP) را با **پنل مدیریت کامل دوم‌زبانه** در یک Worker واحد ترکیب کرده است.
+نوا پروکسی یک **پروکسی شخصی و همه‌کاره برای دور زدن سانسور** است که کاملاً روی Cloudflare Workers، **پلن رایگان**، اجرا می‌شود. این پروژه یک پروکسی قدرتمند (VLESS، Trojan، Shadowsocks روی WebSocket/gRPC/XHTTP) را با **پنل مدیریت کامل دوم‌زبانه** در یک Worker واحد ترکیب کرده است.
 
 **چیزهایی که نوا را متفاوت می‌کند:**
-- ⚡ **بدون نیاز به زیرساخت** — بدون VPS، بدون دامنه برای شروع
-- 🌍 **IP تمیز به‌تفکیک ISP** — بهینه‌سازی خودکار برای هر اپراتور ایرانی
-- 👥 **چندکاربره** — لینک اختصاصی با سهمیه، تاریخ انقضا و کنترل روشن/خاموش
-- 🤖 **ربات تلگرام** — مدیریت کامل از طریق تلگرام
-- 🔗 **زنجیره پروکسی** — SOCKS5، HTTP، HTTPS، TURN، SSTP
-- 🛡️ **دورزدن پیشرفته** — ECH، TLS fragment، 0-RTT، fingerprint
-- 🧩 **حالت Backend** — اتصال به VPS شخصی Xray/sing-box برای VLESS + تماس تصویری
+- ⚡ **بدون نیاز به زیرساخت**، بدون VPS، بدون دامنه برای شروع
+- 🌍 **IP تمیز به‌تفکیک ISP**، بهینه‌سازی خودکار برای هر اپراتور ایرانی
+- 👥 **چندکاربره**، لینک اختصاصی با سهمیه، تاریخ انقضا و کنترل روشن/خاموش
+- 🤖 **ربات تلگرام**، مدیریت کامل از طریق تلگرام
+- 🔗 **زنجیره پروکسی**، SOCKS5، HTTP، HTTPS، TURN، SSTP
+- 🛡️ **دورزدن پیشرفته**، ECH، TLS fragment، 0-RTT، fingerprint
+- 🧩 **حالت Backend**، اتصال به VPS شخصی Xray/sing-box برای VLESS + تماس تصویری
 
 ---
 
-## ⚡ نصب سریع
+<p align="center">
+  <img src="./assets/readme/section-quick-install.fa.svg" width="100%" alt="نصب سریع: سه راه برای نصب در چند دقیقه.">
+</p>
 
 روش مورد نظر خود را انتخاب کنید:
 
 ### 🖥️ Nova Wizard (دسکتاپ)
 
-نرم‌افزار رسمی دسکتاپ با رابط گرافیکی — بدون نیاز به دانش فنی.
+نرم‌افزار رسمی دسکتاپ با رابط گرافیکی، بدون نیاز به دانش فنی.
 
 [**→ دانلود Nova Wizard برای ویندوز و لینوکس**](https://github.com/IRNova/Nova-Wizard)
 
@@ -72,14 +76,16 @@ WARP، زنجیره پروکسی و حالت Backend. اجرا روی **پلن �
 
 ### 📱 موبایل
 
-- **Android:** **رادار** با ویزارد داخلی برای نصب آسان نوا پروکسی روی کلودفلر — به‌زودی منتشر می‌شود.
+- **Android:** **رادار** با ویزارد داخلی برای نصب آسان نوا پروکسی روی کلودفلر، به‌زودی منتشر می‌شود.
 - **iOS:** در دست توسعه.
 
 ---
 
-## 🛰 حالت Backend (VLESS + تماس تصویری/صوتی)
+<p align="center">
+  <img src="./assets/readme/section-backend-mode.fa.svg" width="100%" alt="حالت Backend: VLESS به‌همراه تماس تصویری و صوتی از طریق VPS شما.">
+</p>
 
-Cloudflare Workers نمی‌تواند پروکسی TCP بومی اجرا کند یا ترافیک UDP را مستقیماً مدیریت کند. برای فعال‌سازی این قابلیت‌ها، نوا از **حالت Backend** پشتیبانی می‌کند — ارسال ترافیک به VPS شخصی Xray یا sing-box.
+Cloudflare Workers نمی‌تواند پروکسی TCP بومی اجرا کند یا ترافیک UDP را مستقیماً مدیریت کند. برای فعال‌سازی این قابلیت‌ها، نوا از **حالت Backend** پشتیبانی می‌کند، ارسال ترافیک به VPS شخصی Xray یا sing-box.
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/IRNova/Tools/main/nova-backend.sh)
@@ -97,7 +103,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/IRNova/Tools/main/nova-backe
 
 ---
 
-## 🧬 تفاوت نسخه‌ها (v1 → v2 → v3)
+<p align="center">
+  <img src="./assets/readme/section-feature-evolution.fa.svg" width="100%" alt="تفاوت نسخه‌ها: رشد نوا در نسخه‌های v1 تا v3.">
+</p>
 
 | قابلیت / Feature | v1 | v2 | v3 |
 |------------------|:--:|:--:|:--:|
@@ -214,7 +222,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/IRNova/Tools/main/nova-backe
 
 ---
 
-## 💜 حمایت از پروژه
+<p align="center">
+  <img src="./assets/readme/section-support.fa.svg" width="100%" alt="حمایت از پروژه: به ریپو ستاره بده و نوا را رایگان نگه دار.">
+</p>
 
 اگر نوا برایتان مفید بود، لطفاً با یک **⭐ ستاره** و یک دونیت کوچک از ادامه‌ی کار حمایت کنید.
 
@@ -234,7 +244,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/IRNova/Tools/main/nova-backe
 
 ساخته شده با ❤️ برای اینترنت آزاد و باز.
 
-- [@iiviirv](https://github.com/iiviirv) — مشارکت‌کننده
+- [@iiviirv](https://github.com/iiviirv)، مشارکت‌کننده
 - [Cloudflare Workers](https://workers.cloudflare.com/)
 - [Xray-core](https://github.com/XTLS/xray-core)
 
@@ -255,13 +265,13 @@ bash <(curl -fsSL https://raw.githubusercontent.com/IRNova/Tools/main/nova-backe
 
 ## مجوز
 
-MIT — فایل [LICENSE](LICENSE) را ببینید. مجوز MIT برای سورس‌کد است؛ شرایط برند بالا برای نام و سرویس نوا اعمال می‌شود.
+MIT، فایل [LICENSE](LICENSE) را ببینید. مجوز MIT برای سورس‌کد است؛ شرایط برند بالا برای نام و سرویس نوا اعمال می‌شود.
 
 ---
 
 <div align="center">
 
-ساخته شده برای ایران <img src="https://raw.githubusercontent.com/IRNova/Nova-Proxy/main/flag-iran.svg" height="16" alt="Iran (Lion and Sun)" /> — و هرکس که به اینترنت آزاد نیاز دارد.
+ساخته شده برای ایران <img src="https://raw.githubusercontent.com/IRNova/Nova-Proxy/main/flag-iran.svg" height="16" alt="Iran (Lion and Sun)" />، و هرکس که به اینترنت آزاد نیاز دارد.
 **هیچ اطلاعاتی از ترافیک شما ذخیره نمی‌شود. پروکسی متعلق به خود شماست.**
 
 📖 [نسخه انگلیسی / English version](README.md)
